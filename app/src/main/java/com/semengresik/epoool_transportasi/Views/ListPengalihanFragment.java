@@ -1,0 +1,108 @@
+package com.semengresik.epoool_transportasi.Views;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.cardview.widget.CardView;
+import androidx.exifinterface.media.ExifInterface;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
+import com.semengresik.epoool_transportasi.Adapters.AdapterPengalihan;
+import com.semengresik.epoool_transportasi.Models.PengalihanModel;
+import com.semengresik.epoool_transportasi.R;
+import com.semengresik.epoool_transportasi.Utils.Function;
+import com.semengresik.epoool_transportasi.Utils.GsonConverter;
+
+import java.util.List;
+
+/* loaded from: classes.dex */
+public class ListPengalihanFragment extends Fragment implements ListPengalihanPresenter.ViewListPengalihan {
+    private CardView cardCari;
+    Context context;
+    private EditText editSearch;
+    ListPengalihanPresenter presenter;
+    private RecyclerView rcPengalihan;
+    String search = "";
+    private SwipyRefreshLayout srl;
+    private TextView tvKosong;
+
+    @Override // androidx.fragment.app.Fragment
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_list_pengalihan, viewGroup, false);
+        this.rcPengalihan = (RecyclerView) viewInflate.findViewById(R.id.rc_pengalihan);
+        this.srl = (SwipyRefreshLayout) viewInflate.findViewById(R.id.srl_temp);
+        this.tvKosong = (TextView) viewInflate.findViewById(R.id.tv_kosong);
+        this.cardCari = (CardView) viewInflate.findViewById(R.id.card_cari);
+        this.editSearch = (EditText) viewInflate.findViewById(R.id.edit_search);
+        this.srl.setRefreshing(true);
+        getActivity().setTitle("Approval Pengalihan");
+        this.context = getActivity();
+        this.cardCari.setVisibility(0);
+        ListPengalihanPresenter listPengalihanPresenter = new ListPengalihanPresenter(new ListPengalihanPresenter.ViewListPengalihan() { // from class: com.semengresik.epoool_transportasi.Views.-$$Lambda$VSiWxOXe-pu0RoJlX_GDvY42KXs
+            @Override // com.semengresik.epoool_transportasi.Views.ListPengalihanPresenter.ViewListPengalihan
+            public final void showPengalihan(List list, int i, String str) {
+                this.showPengalihan(list, i, str);
+            }
+        });
+        this.presenter = listPengalihanPresenter;
+        listPengalihanPresenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, this.search);
+        this.srl.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.1
+            @Override // com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout.OnRefreshListener
+            public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
+                ListPengalihanFragment.this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, ListPengalihanFragment.this.search);
+            }
+        });
+        this.editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.2
+            @Override // android.widget.TextView.OnEditorActionListener
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == 3) {
+                    ListPengalihanFragment.this.srl.setRefreshing(true);
+                    ListPengalihanFragment.this.search = textView.getText().toString();
+                    ListPengalihanFragment.this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, ListPengalihanFragment.this.search);
+                    ((InputMethodManager) ListPengalihanFragment.this.context.getSystemService("input_method")).hideSoftInputFromWindow(ListPengalihanFragment.this.editSearch.getWindowToken(), 0);
+                }
+                return false;
+            }
+        });
+        return viewInflate;
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onResume() {
+        super.onResume();
+        this.srl.setRefreshing(true);
+        this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, this.search);
+    }
+
+    @Override // com.semengresik.epoool_transportasi.Views.ListPengalihanPresenter.ViewListPengalihan
+    public void showPengalihan(final List<PengalihanModel> list, int i, String str) {
+        this.srl.setRefreshing(false);
+        if (i != 1 || list.size() == 0) {
+            this.tvKosong.setVisibility(0);
+        } else {
+            this.tvKosong.setVisibility(8);
+        }
+        this.rcPengalihan.setAdapter(new AdapterPengalihan(list, this.context, new AdapterPengalihan.Listener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.3
+            @Override // com.semengresik.epoool_transportasi.Adapters.AdapterPengalihan.Listener
+            public void onItemClick(int i2) {
+                String jsonString = new GsonConverter().toJsonString(list.get(i2));
+                Intent intent = new Intent(ListPengalihanFragment.this.context, (Class<?>) DetailPengalihanActivity.class);
+                intent.putExtra("pengalihan_string", jsonString);
+                ListPengalihanFragment.this.context.startActivity(intent);
+                Function.openAct(ListPengalihanFragment.this.context);
+            }
+        }));
+        this.rcPengalihan.setNestedScrollingEnabled(false);
+        this.rcPengalihan.setLayoutManager(new LinearLayoutManager(this.context));
+    }
+}
