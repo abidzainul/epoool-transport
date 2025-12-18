@@ -46,15 +46,9 @@ public class HistoryPengalihanFragment extends Fragment implements ListPengaliha
         this.srl.setRefreshing(true);
         getActivity().setTitle("Riwayat Pengalihan");
         this.context = getActivity();
-        this.cardCari.setVisibility(0);
-        ListPengalihanPresenter listPengalihanPresenter = new ListPengalihanPresenter(new ListPengalihanPresenter.ViewListPengalihan() { // from class: com.semengresik.epoool_transportasi.Views.-$$Lambda$bJnUai4Yo1jFtSB4sz286JZqp7w
-            @Override // com.semengresik.epoool_transportasi.Views.ListPengalihanPresenter.ViewListPengalihan
-            public final void showPengalihan(List list, int i, String str) {
-                this.showPengalihan(list, i, str);
-            }
-        });
-        this.presenter = listPengalihanPresenter;
-        listPengalihanPresenter.loadPengalihan("4#5", this.search);
+        this.cardCari.setVisibility(View.VISIBLE);
+        this.presenter = new ListPengalihanPresenter(this);
+        presenter.loadPengalihan("4#5", this.search);
         this.srl.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() { // from class: com.semengresik.epoool_transportasi.Views.HistoryPengalihanFragment.1
             @Override // com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout.OnRefreshListener
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
@@ -68,7 +62,7 @@ public class HistoryPengalihanFragment extends Fragment implements ListPengaliha
                     HistoryPengalihanFragment.this.srl.setRefreshing(true);
                     HistoryPengalihanFragment.this.search = textView.getText().toString();
                     HistoryPengalihanFragment.this.presenter.loadPengalihan("4#5", HistoryPengalihanFragment.this.search);
-                    ((InputMethodManager) HistoryPengalihanFragment.this.context.getSystemService("input_method")).hideSoftInputFromWindow(HistoryPengalihanFragment.this.editSearch.getWindowToken(), 0);
+                    ((InputMethodManager) HistoryPengalihanFragment.this.context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(HistoryPengalihanFragment.this.editSearch.getWindowToken(), 0);
                 }
                 return false;
             }
@@ -87,9 +81,9 @@ public class HistoryPengalihanFragment extends Fragment implements ListPengaliha
     public void showPengalihan(final List<PengalihanModel> list, int i, String str) {
         this.srl.setRefreshing(false);
         if (i != 1 || list.size() == 0) {
-            this.tvKosong.setVisibility(0);
+            this.tvKosong.setVisibility(View.VISIBLE);
         } else {
-            this.tvKosong.setVisibility(8);
+            this.tvKosong.setVisibility(View.GONE);
         }
         this.rcPengalihan.setAdapter(new AdapterPengalihan(list, this.context, new AdapterPengalihan.Listener() { // from class: com.semengresik.epoool_transportasi.Views.HistoryPengalihanFragment.3
             @Override // com.semengresik.epoool_transportasi.Adapters.AdapterPengalihan.Listener

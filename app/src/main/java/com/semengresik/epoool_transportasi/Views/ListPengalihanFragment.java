@@ -47,15 +47,9 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
         this.srl.setRefreshing(true);
         getActivity().setTitle("Approval Pengalihan");
         this.context = getActivity();
-        this.cardCari.setVisibility(0);
-        ListPengalihanPresenter listPengalihanPresenter = new ListPengalihanPresenter(new ListPengalihanPresenter.ViewListPengalihan() { // from class: com.semengresik.epoool_transportasi.Views.-$$Lambda$VSiWxOXe-pu0RoJlX_GDvY42KXs
-            @Override // com.semengresik.epoool_transportasi.Views.ListPengalihanPresenter.ViewListPengalihan
-            public final void showPengalihan(List list, int i, String str) {
-                this.showPengalihan(list, i, str);
-            }
-        });
-        this.presenter = listPengalihanPresenter;
-        listPengalihanPresenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, this.search);
+        this.cardCari.setVisibility(View.VISIBLE);
+        this.presenter = new ListPengalihanPresenter(this);
+        presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, this.search);
         this.srl.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.1
             @Override // com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout.OnRefreshListener
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
@@ -69,7 +63,7 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
                     ListPengalihanFragment.this.srl.setRefreshing(true);
                     ListPengalihanFragment.this.search = textView.getText().toString();
                     ListPengalihanFragment.this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, ListPengalihanFragment.this.search);
-                    ((InputMethodManager) ListPengalihanFragment.this.context.getSystemService("input_method")).hideSoftInputFromWindow(ListPengalihanFragment.this.editSearch.getWindowToken(), 0);
+                    ((InputMethodManager) ListPengalihanFragment.this.context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(ListPengalihanFragment.this.editSearch.getWindowToken(), 0);
                 }
                 return false;
             }
@@ -88,9 +82,9 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
     public void showPengalihan(final List<PengalihanModel> list, int i, String str) {
         this.srl.setRefreshing(false);
         if (i != 1 || list.size() == 0) {
-            this.tvKosong.setVisibility(0);
+            this.tvKosong.setVisibility(View.VISIBLE);
         } else {
-            this.tvKosong.setVisibility(8);
+            this.tvKosong.setVisibility(View.GONE);
         }
         this.rcPengalihan.setAdapter(new AdapterPengalihan(list, this.context, new AdapterPengalihan.Listener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.3
             @Override // com.semengresik.epoool_transportasi.Adapters.AdapterPengalihan.Listener

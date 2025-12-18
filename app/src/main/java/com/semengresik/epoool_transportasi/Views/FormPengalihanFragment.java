@@ -91,7 +91,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
                 if (!FormPengalihanFragment.this.etNoBooking.getText().toString().equals("")) {
                     FormPengalihanFragment.this.presenter.loadDataResi(FormPengalihanFragment.this.etNoBooking.getText().toString());
                 } else {
-                    Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. Resi dahulu", 0).show();
+                    Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. Resi dahulu", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -101,7 +101,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
                 if (!FormPengalihanFragment.this.etNoShipto.getText().toString().equals("")) {
                     FormPengalihanFragment.this.presenter.loadDataReceiver(FormPengalihanFragment.this.etNoShipto.getText().toString());
                 } else {
-                    Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. Receiver dahulu", 0).show();
+                    Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. Receiver dahulu", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -137,13 +137,13 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
             public void onClick(View view) {
                 if (FormPengalihanFragment.this.resi == null || FormPengalihanFragment.this.id_receiver == null || FormPengalihanFragment.this.idAlasan == null) {
                     if (FormPengalihanFragment.this.resi == null) {
-                        Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. SPJ dahulu", 0).show();
+                        Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. SPJ dahulu", Toast.LENGTH_SHORT).show();
                         return;
                     } else if (FormPengalihanFragment.this.id_receiver == null) {
-                        Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. Receiver dahulu", 0).show();
+                        Toast.makeText(FormPengalihanFragment.this.context, "Isi kolom No. Receiver dahulu", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
-                        Toast.makeText(FormPengalihanFragment.this.context, "Isi alasan dahulu", 0).show();
+                        Toast.makeText(FormPengalihanFragment.this.context, "Isi alasan dahulu", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -205,7 +205,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
         textView.setText(str);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.context, 1, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapterDialogList);
         AlertDialog alertDialogCreate = builder.create();
         alertDialogCreate.getWindow().setBackgroundDrawable(new ColorDrawable(0));
@@ -224,7 +224,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
                     this.presenter.loadDataReceiver(this.etNoShipto.getText().toString());
                     return;
                 } else {
-                    Toast.makeText(this.context, "Isi kolom No. Receiver dahulu", 0).show();
+                    Toast.makeText(this.context, "Isi kolom No. Receiver dahulu", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
@@ -233,7 +233,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
                 if (!this.etNoBooking.getText().toString().equals("")) {
                     this.presenter.loadDataResi(this.etNoBooking.getText().toString());
                 } else {
-                    Toast.makeText(this.context, "Isi kolom No. Resi dahulu", 0).show();
+                    Toast.makeText(this.context, "Isi kolom No. Resi dahulu", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -251,7 +251,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
             this.resi = this.etNoBooking.getText().toString();
             return;
         }
-        Toast.makeText(this.context, str, 0).show();
+        Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override // com.semengresik.epoool_transportasi.Views.FormPengalihanPresenter.ViewFormPengalihan
@@ -265,17 +265,17 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
                 this.id_receiver = receiverModel.getId();
                 return;
             }
-            Toast.makeText(this.context, "Koordinat receiver kosong", 0).show();
+            Toast.makeText(this.context, "Koordinat receiver kosong", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(this.context, str, 0).show();
+        Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override // com.semengresik.epoool_transportasi.Views.FormPengalihanPresenter.ViewFormPengalihan
     public void afterInsert(int i, String str) {
         hideProgressDialog();
         if (i == 1) {
-            Toast.makeText(this.context, str, 0).show();
+            Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();
             this.tvMuatan.setText("-");
             this.tvJumlah.setText("-");
             this.tvShiptoAwal.setText("-");
@@ -295,7 +295,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
             this.tvButton.setTextColor(getResources().getColor(R.color.grey));
             return;
         }
-        Toast.makeText(this.context, str, 0).show();
+        Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override // com.semengresik.epoool_transportasi.Views.FormPengalihanPresenter.ViewFormPengalihan
@@ -316,7 +316,7 @@ public class FormPengalihanFragment extends Fragment implements FormPengalihanPr
             });
             return;
         }
-        Toast.makeText(this.context, "Master data alasan kosong", 0).show();
+        Toast.makeText(this.context, "Master data alasan kosong", Toast.LENGTH_SHORT).show();
     }
 
     public void showProgressDialog() {

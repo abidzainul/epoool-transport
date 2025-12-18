@@ -70,12 +70,7 @@ public class DetailPengalihanActivity extends AppCompatActivity implements Detai
         this.pengalihan = new GsonConverter<PengalihanModel>() { // from class: com.semengresik.epoool_transportasi.Views.DetailPengalihanActivity.1
         }.toJsonObject(getIntent().getStringExtra("pengalihan_string"));
         setData();
-        this.presenter = new DetailPengalihanPresenter(new DetailPengalihanPresenter.ViewDetailPengalihan() { // from class: com.semengresik.epoool_transportasi.Views.-$$Lambda$KqLBEOWnB-E5jpaUiUrm--jrrS8
-            @Override // com.semengresik.epoool_transportasi.Views.DetailPengalihanPresenter.ViewDetailPengalihan
-            public final void afterApproved(int i, String str) {
-                this.afterApproved(i, str);
-            }
-        });
+        this.presenter = new DetailPengalihanPresenter(this);
         this.btnTolak.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Views.DetailPengalihanActivity.2
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
@@ -92,11 +87,11 @@ public class DetailPengalihanActivity extends AppCompatActivity implements Detai
 
     void setData() {
         if (this.pengalihan.getStatusApproval().equals(ExifInterface.GPS_MEASUREMENT_3D)) {
-            this.tvStatus.setVisibility(8);
-            this.llButtonBar.setVisibility(0);
+            this.tvStatus.setVisibility(View.GONE);
+            this.llButtonBar.setVisibility(View.VISIBLE);
         } else {
-            this.tvStatus.setVisibility(0);
-            this.llButtonBar.setVisibility(8);
+            this.tvStatus.setVisibility(View.VISIBLE);
+            this.llButtonBar.setVisibility(View.GONE);
             String statusApproval = this.pengalihan.getStatusApproval();
             statusApproval.hashCode();
             if (statusApproval.equals("4")) {
@@ -132,10 +127,10 @@ public class DetailPengalihanActivity extends AppCompatActivity implements Detai
     @Override // com.semengresik.epoool_transportasi.Views.DetailPengalihanPresenter.ViewDetailPengalihan
     public void afterApproved(int i, String str) {
         if (i == 1) {
-            Toast.makeText(this.context, str, 0).show();
+            Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();
             finish();
         } else {
-            Toast.makeText(this.context, str, 0).show();
+            Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();
         }
     }
 }

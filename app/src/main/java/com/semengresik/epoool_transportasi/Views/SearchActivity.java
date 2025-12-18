@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class SearchActivity extends AppCompatActivity implements SearchPresenter
         }
         this.context = this;
         this.etSearch.requestFocus();
-        ((InputMethodManager) getSystemService("input_method")).showSoftInput(this.etSearch, 1);
+        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(this.etSearch, 1);
         this.presenter = new SearchPresenter(this);
         if (getIntent().getStringExtra(FirebaseAnalytics.Event.SEARCH) != null && !getIntent().getStringExtra(FirebaseAnalytics.Event.SEARCH).equals("")) {
             this.etSearch.setText(getIntent().getStringExtra(FirebaseAnalytics.Event.SEARCH));
@@ -75,7 +76,7 @@ public class SearchActivity extends AppCompatActivity implements SearchPresenter
                     }
                 }
                 if (editable.toString().length() == 0) {
-                    SearchActivity.this.tvKosong.setVisibility(0);
+                    SearchActivity.this.tvKosong.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -84,7 +85,7 @@ public class SearchActivity extends AppCompatActivity implements SearchPresenter
     @Override // com.semengresik.epoool_transportasi.Views.SearchPresenter.ViewListSearch
     public void showSearch(List<SearchModel> list, int i, String str) {
         if (i == 1) {
-            this.tvKosong.setVisibility(8);
+            this.tvKosong.setVisibility(View.GONE);
             AdapterSearchList adapterSearchList = new AdapterSearchList(list, this.context, getIntent().getIntExtra("tipe", 0));
             this.rcList.setHasFixedSize(true);
             this.rcList.setNestedScrollingEnabled(false);
@@ -101,6 +102,6 @@ public class SearchActivity extends AppCompatActivity implements SearchPresenter
             });
             return;
         }
-        this.tvKosong.setVisibility(0);
+        this.tvKosong.setVisibility(View.VISIBLE);
     }
 }

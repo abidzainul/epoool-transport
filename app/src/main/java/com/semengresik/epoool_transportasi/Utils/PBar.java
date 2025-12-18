@@ -20,7 +20,7 @@ public class PBar {
         layoutParams.addRule(13);
         this.progressbar.setLayoutParams(layoutParams);
         this.progressbar.getLayoutParams().height = 45;
-        this.progressbar.setVisibility(8);
+        this.progressbar.setVisibility(View.GONE);
     }
 
     public void show() {

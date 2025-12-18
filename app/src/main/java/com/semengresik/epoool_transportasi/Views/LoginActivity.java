@@ -51,9 +51,9 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
             e.printStackTrace();
         }
         if (ApiClient.DEV) {
-            this.tvFordev.setVisibility(0);
+            this.tvFordev.setVisibility(View.VISIBLE);
         } else {
-            this.tvFordev.setVisibility(8);
+            this.tvFordev.setVisibility(View.GONE);
         }
         getSupportActionBar().hide();
         this.context = this;

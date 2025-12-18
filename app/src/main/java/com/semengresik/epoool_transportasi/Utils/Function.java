@@ -49,7 +49,7 @@ public class Function {
     }
 
     public static void toast(Context context, String str) {
-        Toast.makeText(context, str, 0).show();
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 
     public static HashMap<String, String> paramAdderPost(HashMap<String, String> map) {
@@ -105,8 +105,8 @@ public class Function {
     }
 
     public static void switchView(View view, View view2) {
-        view.setVisibility(8);
-        view2.setVisibility(0);
+        view.setVisibility(View.GONE);
+        view2.setVisibility(View.VISIBLE);
     }
 
     public static String toDay(String str) {

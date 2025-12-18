@@ -43,9 +43,9 @@ public class AdapterPengalihan extends RecyclerView.Adapter<AdapterPengalihan.Vi
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         PengalihanModel pengalihanModel = this.list.get(i);
         if (pengalihanModel.getStatusApproval().equals(ExifInterface.GPS_MEASUREMENT_3D)) {
-            viewHolder.tvStatus.setVisibility(8);
+            viewHolder.tvStatus.setVisibility(View.GONE);
         } else {
-            viewHolder.tvStatus.setVisibility(0);
+            viewHolder.tvStatus.setVisibility(View.VISIBLE);
             String statusApproval = pengalihanModel.getStatusApproval();
             statusApproval.hashCode();
             if (statusApproval.equals("4")) {

@@ -127,7 +127,7 @@ public class DialogHelper {
         textView.setText(str);
         textView2.setText(str2);
         button.setText(str3);
-        button2.setVisibility(8);
+        button2.setVisibility(View.GONE);
         button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.7
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
@@ -157,7 +157,7 @@ public class DialogHelper {
         textView.setText(str);
         textView2.setText(str2);
         button.setText(str3);
-        button2.setVisibility(8);
+        button2.setVisibility(View.GONE);
         button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.8
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {

@@ -75,7 +75,7 @@ public class OkHttpHelper {
             if (OkHttpHelper.this.obj != null) {
                 this.run.run();
             } else {
-                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", 1).show();
+                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -116,7 +116,7 @@ public class OkHttpHelper {
             if (OkHttpHelper.this.obj != null) {
                 this.run.run();
             } else {
-                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", 1).show();
+                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -173,7 +173,7 @@ public class OkHttpHelper {
             if (OkHttpHelper.this.obj != null) {
                 this.run.run();
             } else {
-                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", 1).show();
+                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -230,7 +230,7 @@ public class OkHttpHelper {
             if (OkHttpHelper.this.obj != null) {
                 this.run.run();
             } else {
-                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", 1).show();
+                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -285,7 +285,7 @@ public class OkHttpHelper {
             if (OkHttpHelper.this.obj != null) {
                 this.run.run();
             } else {
-                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", 1).show();
+                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -342,7 +342,7 @@ public class OkHttpHelper {
             if (OkHttpHelper.this.obj != null) {
                 this.run.run();
             } else {
-                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", 1).show();
+                Toast.makeText(this.context, "Kesalahan Jaringan, Coba Lagi", Toast.LENGTH_LONG).show();
             }
         }
     }

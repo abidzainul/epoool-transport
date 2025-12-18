@@ -2,6 +2,8 @@ package com.semengresik.epoool_transportasi.REST;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.semengresik.epoool_transportasi.BuildConfig;
+
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -11,14 +13,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /* loaded from: classes.dex */
 public class ApiClient {
-    public static boolean DEV = false;
+    public static boolean DEV = true;
     public static String baseUrl;
     public static String url;
     public static String urlImageKendala;
     public static String urlImageOriginator;
+    private static Retrofit retrofit = null;
 
     static {
-        baseUrl = 0 != 0 ? "http://10.15.3.242/dev/" : "https://app.epoool.id/";
+        baseUrl = BuildConfig.DEBUG ? "http://10.0.2.2/" : "https://app.epoool.id/";
         url = baseUrl + "index.php/mobile/api_android_driver/";
         urlImageOriginator = baseUrl + "berkas/foto_user/originator/";
         urlImageKendala = baseUrl + "berkas/foto_claim/img_problem/";
@@ -30,6 +33,23 @@ public class ApiClient {
         if (DEV) {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         }
-        return new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create(gsonCreate)).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).client(new OkHttpClient.Builder().connectTimeout(1L, TimeUnit.MINUTES).readTimeout(30L, TimeUnit.SECONDS).writeTimeout(30L, TimeUnit.SECONDS).addInterceptor(httpLoggingInterceptor).build()).build();
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(1L, TimeUnit.MINUTES)
+                .readTimeout(30L, TimeUnit.SECONDS)
+                .writeTimeout(30L, TimeUnit.SECONDS)
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
+
+        if (retrofit != null) {
+            return retrofit;
+        }
+        retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create(gsonCreate))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
+                .build();
+        return retrofit;
     }
 }
