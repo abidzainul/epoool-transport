@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.semengresik.epoool_transportasi.R;
 
-/* loaded from: classes.dex */
 public class DialogHelper {
     public static void showWithDoubleButton(Context context, String str, String str2, String str3, String str4, final Runnable runnable) {
         final Dialog dialog = new Dialog(context);
@@ -28,15 +27,15 @@ public class DialogHelper {
         textView2.setText(str2);
         button.setText(str3);
         button2.setText(str4);
-        button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.1
-            @Override // android.view.View.OnClickListener
+        button.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 runnable.run();
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.2
-            @Override // android.view.View.OnClickListener
+        button2.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
             }
@@ -61,15 +60,15 @@ public class DialogHelper {
         textView2.setText(str2);
         button.setText(str3);
         button2.setText(str4);
-        button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.3
-            @Override // android.view.View.OnClickListener
+        button.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 runnable.run();
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.4
-            @Override // android.view.View.OnClickListener
+        button2.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 runnable2.run();
@@ -95,15 +94,15 @@ public class DialogHelper {
         textView2.setText(str2);
         button.setText(str3);
         button2.setText(str4);
-        button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.5
-            @Override // android.view.View.OnClickListener
+        button.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 runnable.run();
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.6
-            @Override // android.view.View.OnClickListener
+        button2.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
             }
@@ -128,8 +127,8 @@ public class DialogHelper {
         textView2.setText(str2);
         button.setText(str3);
         button2.setVisibility(View.GONE);
-        button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.7
-            @Override // android.view.View.OnClickListener
+        button.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 Runnable runnable2 = runnable;
@@ -158,8 +157,8 @@ public class DialogHelper {
         textView2.setText(str2);
         button.setText(str3);
         button2.setVisibility(View.GONE);
-        button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.8
-            @Override // android.view.View.OnClickListener
+        button.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 runnable.run();
@@ -180,8 +179,8 @@ public class DialogHelper {
         textView.setText(str);
         textView2.setText(str2);
         button.setText(str3);
-        button.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Utils.DialogHelper.9
-            @Override // android.view.View.OnClickListener
+        button.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 dialog.dismiss();
                 runnable.run();

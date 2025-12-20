@@ -13,7 +13,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
-/* loaded from: classes.dex */
 public interface ApiInterface {
     @FormUrlEncoded
     @POST("mobile/pengalihan/api_pengalihan/get_alasan")

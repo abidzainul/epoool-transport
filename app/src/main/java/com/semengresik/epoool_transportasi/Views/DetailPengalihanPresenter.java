@@ -10,7 +10,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-/* loaded from: classes.dex */
 public class DetailPengalihanPresenter {
     private ApiInterface apiInterface = (ApiInterface) ApiClient.getClient().create(ApiInterface.class);
     private ViewDetailPengalihan view;
@@ -24,24 +23,24 @@ public class DetailPengalihanPresenter {
     }
 
     public void updateStatus(String str, String str2) {
-        this.apiInterface.updateStatusPengalihan(Constant.idUsername, Constant.token_fcm, str, str2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<InsertUpdateModel>() { // from class: com.semengresik.epoool_transportasi.Views.DetailPengalihanPresenter.1
-            @Override // io.reactivex.Observer
+        this.apiInterface.updateStatusPengalihan(Constant.idUsername, Constant.token_fcm, str, str2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<InsertUpdateModel>() { 
+            @Override 
             public void onComplete() {
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onSubscribe(Disposable disposable) {
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onNext(InsertUpdateModel insertUpdateModel) {
-                DetailPengalihanPresenter.this.view.afterApproved(insertUpdateModel.getCode().intValue(), insertUpdateModel.getPesan());
+                view.afterApproved(insertUpdateModel.getCode().intValue(), insertUpdateModel.getPesan());
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onError(Throwable th) {
                 ErrorLogAPI.errorThrowing(th.getMessage(), "mobile+pengalihan+api_pengalihan+update_pengalihan");
-                DetailPengalihanPresenter.this.view.afterApproved(0, Constant.warningNoConnection);
+                view.afterApproved(0, Constant.warningNoConnection);
             }
         });
     }

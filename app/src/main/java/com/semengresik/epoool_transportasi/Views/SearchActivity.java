@@ -19,7 +19,6 @@ import com.semengresik.epoool_transportasi.R;
 
 import java.util.List;
 
-/* loaded from: classes.dex */
 public class SearchActivity extends AppCompatActivity implements SearchPresenter.ViewListSearch {
     Context context;
     EditText etSearch;
@@ -27,7 +26,7 @@ public class SearchActivity extends AppCompatActivity implements SearchPresenter
     RecyclerView rcList;
     TextView tvKosong;
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_search);
@@ -52,52 +51,52 @@ public class SearchActivity extends AppCompatActivity implements SearchPresenter
                 this.presenter.loadSearchSPJ(this.etSearch.getText().toString());
             }
         }
-        this.etSearch.addTextChangedListener(new TextWatcher() { // from class: com.semengresik.epoool_transportasi.Views.SearchActivity.1
-            @Override // android.text.TextWatcher
+        this.etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.toString().length() >= 3) {
-                    if (SearchActivity.this.getIntent().getIntExtra("tipe", 0) == 1) {
-                        SearchActivity.this.presenter.loadSearchReceiver(editable.toString());
+                    if (getIntent().getIntExtra("tipe", 0) == 1) {
+                        presenter.loadSearchReceiver(editable.toString());
                         return;
                     } else {
-                        if (SearchActivity.this.getIntent().getIntExtra("tipe", 0) == 2) {
-                            SearchActivity.this.presenter.loadSearchSPJ(editable.toString());
+                        if (getIntent().getIntExtra("tipe", 0) == 2) {
+                            presenter.loadSearchSPJ(editable.toString());
                             return;
                         }
                         return;
                     }
                 }
                 if (editable.toString().length() == 0) {
-                    SearchActivity.this.tvKosong.setVisibility(View.VISIBLE);
+                    tvKosong.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
 
-    @Override // com.semengresik.epoool_transportasi.Views.SearchPresenter.ViewListSearch
+    @Override
     public void showSearch(List<SearchModel> list, int i, String str) {
         if (i == 1) {
             this.tvKosong.setVisibility(View.GONE);
             AdapterSearchList adapterSearchList = new AdapterSearchList(list, this.context, getIntent().getIntExtra("tipe", 0));
             this.rcList.setHasFixedSize(true);
             this.rcList.setNestedScrollingEnabled(false);
-            this.rcList.setLayoutManager(new LinearLayoutManager(this.context, 1, false));
+            this.rcList.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.VERTICAL, false));
             this.rcList.setAdapter(adapterSearchList);
-            adapterSearchList.setOnItemClickListener(new AdapterSearchList.OnListClickListener() { // from class: com.semengresik.epoool_transportasi.Views.SearchActivity.2
-                @Override // com.semengresik.epoool_transportasi.Adapters.AdapterSearchList.OnListClickListener
+            adapterSearchList.setOnItemClickListener(new AdapterSearchList.OnListClickListener() {
+                @Override
                 public void onClicked(String str2, int i2) {
                     Intent intent = new Intent();
                     intent.putExtra(FirebaseAnalytics.Event.SEARCH, str2);
-                    SearchActivity.this.setResult(-1, intent);
-                    SearchActivity.this.finish();
+                    setResult(-1, intent);
+                    finish();
                 }
             });
             return;

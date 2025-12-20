@@ -23,7 +23,6 @@ import com.semengresik.epoool_transportasi.Utils.GsonConverter;
 
 import java.util.UUID;
 
-/* loaded from: classes.dex */
 public class LoginActivity extends AppCompatActivity implements LoginPresenter.ViewLogin {
     Button btnLogin;
     private Context context;
@@ -34,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
     TextView tvFordev;
     TextView tvVersion;
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_login);
@@ -62,13 +61,13 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
         this.etPassword.getBackground().mutate().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
         cekLogin();
         this.presenter = new LoginPresenter(this);
-        this.btnLogin.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Views.LoginActivity.1
-            @Override // android.view.View.OnClickListener
+        this.btnLogin.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
-                if (LoginActivity.this.etUsername.getText().toString().equals("") || LoginActivity.this.etPassword.getText().toString().equals("")) {
-                    Function.snackBarRed(LoginActivity.this.context, "Mohon lengkapi semua field di atas");
+                if (etUsername.getText().toString().equals("") || etPassword.getText().toString().equals("")) {
+                    Function.snackBarRed(context, "Mohon lengkapi semua field di atas");
                 } else {
-                    LoginActivity.this.presenter.doLogin(LoginActivity.this.etUsername.getText().toString(), LoginActivity.this.etPassword.getText().toString());
+                    presenter.doLogin(etUsername.getText().toString(), etPassword.getText().toString());
                 }
             }
         });
@@ -88,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
             Constant.tipe_sub_user = sharedPreferences.getString("tipe_sub_user", "");
             Constant.token = sharedPreferences.getString("token", "");
             System.out.println("Show token fcm: " + sharedPreferences.getString("token_fcm", ""));
-            UserLoginModel jsonObject = new GsonConverter<UserLoginModel>() { // from class: com.semengresik.epoool_transportasi.Views.LoginActivity.2
+            UserLoginModel jsonObject = new GsonConverter<UserLoginModel>() { 
             }.toJsonObject(sharedPreferences.getString("user_model_string", "{}"));
             Constant.modelUser = new UserLoginModel();
             Constant.modelUser.setUsername(jsonObject.getUsername());
@@ -104,13 +103,13 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
         return !sharedPreferences.getString("token_fcm", "").equals("");
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
+    @Override 
     public void onBackPressed() {
         super.onBackPressed();
         Function.closeAct(this);
     }
 
-    @Override // com.semengresik.epoool_transportasi.Views.LoginPresenter.ViewLogin
+    @Override 
     public void afterLogin(UserLoginModel userLoginModel, int i, String str, String str2) {
         if (i == 1) {
             Constant.idUsername = userLoginModel.getIdUsername();

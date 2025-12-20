@@ -11,7 +11,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/* loaded from: classes.dex */
 public class ApiClient {
     public static boolean DEV = true;
     public static String baseUrl;

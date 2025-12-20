@@ -12,7 +12,6 @@ import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.List;
 
-/* loaded from: classes.dex */
 public class SearchPresenter {
     private ApiInterface apiInterface = (ApiInterface) ApiClient.getClient().create(ApiInterface.class);
     private ViewListSearch view;
@@ -26,47 +25,47 @@ public class SearchPresenter {
     }
 
     public void loadSearchReceiver(String str) {
-        this.apiInterface.getSearchReceiver(Constant.token_fcm, Constant.idReference, str).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<SearchModel>() { // from class: com.semengresik.epoool_transportasi.Views.SearchPresenter.1
-            @Override // io.reactivex.Observer
+        this.apiInterface.getSearchReceiver(Constant.token_fcm, Constant.idReference, str).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<SearchModel>() { 
+            @Override 
             public void onComplete() {
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onSubscribe(Disposable disposable) {
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onNext(SearchModel searchModel) {
-                SearchPresenter.this.view.showSearch(searchModel.getData(), searchModel.getCode().intValue(), searchModel.getPesan());
+                view.showSearch(searchModel.getData(), searchModel.getCode().intValue(), searchModel.getPesan());
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onError(Throwable th) {
                 ErrorLogAPI.errorThrowing(th.getMessage(), "mobile+pengalihan+api_pengalihan+cek_receiver");
-                SearchPresenter.this.view.showSearch(new ArrayList(), 0, Constant.warningNoConnection);
+                view.showSearch(new ArrayList(), 0, Constant.warningNoConnection);
             }
         });
     }
 
     public void loadSearchSPJ(String str) {
-        this.apiInterface.getSearchSPJ(Constant.token_fcm, Constant.idReference, str).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<SearchModel>() { // from class: com.semengresik.epoool_transportasi.Views.SearchPresenter.2
-            @Override // io.reactivex.Observer
+        this.apiInterface.getSearchSPJ(Constant.token_fcm, Constant.idReference, str).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<SearchModel>() { 
+            @Override 
             public void onComplete() {
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onSubscribe(Disposable disposable) {
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onNext(SearchModel searchModel) {
-                SearchPresenter.this.view.showSearch(searchModel.getData(), searchModel.getCode().intValue(), searchModel.getPesan());
+                view.showSearch(searchModel.getData(), searchModel.getCode().intValue(), searchModel.getPesan());
             }
 
-            @Override // io.reactivex.Observer
+            @Override 
             public void onError(Throwable th) {
                 ErrorLogAPI.errorThrowing(th.getMessage(), "mobile+pengalihan+api_pengalihan+cek_spj");
-                SearchPresenter.this.view.showSearch(new ArrayList(), 0, Constant.warningNoConnection);
+                view.showSearch(new ArrayList(), 0, Constant.warningNoConnection);
             }
         });
     }

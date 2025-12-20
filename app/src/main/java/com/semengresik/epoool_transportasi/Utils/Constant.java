@@ -6,7 +6,6 @@ import com.semengresik.epoool_transportasi.R;
 import com.semengresik.epoool_transportasi.REST.ApiClient;
 import com.semengresik.epoool_transportasi.Utils.drawer.AdapterListViewDrawer;
 
-/* loaded from: classes.dex */
 public class Constant {
     public static String IMEI;
     public static AdapterListViewDrawer adapterListViewDrawer;

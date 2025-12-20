@@ -22,7 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Locale;
 
-/* loaded from: classes.dex */
 public class Function {
     public static void getScreenSize(Activity activity) {
         Display defaultDisplay = activity.getWindowManager().getDefaultDisplay();
@@ -62,8 +61,8 @@ public class Function {
 
     public static void sendToken(final Context context) {
         try {
-            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener() { // from class: com.semengresik.epoool_transportasi.Utils.-$$Lambda$Function$4djZAJU3gj9Mu7mAfG0n5UkoHmw
-                @Override // com.google.android.gms.tasks.OnCompleteListener
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener() { 
+                @Override 
                 public final void onComplete(Task task) {
                     Function.lambda$sendToken$1(context, task);
                 }
@@ -82,8 +81,8 @@ public class Function {
         Constant.token_fcm = str;
         context.getSharedPreferences("MyPreferences", 0).edit().putString("token_fcm", str).apply();
         final OkHttpHelper okHttpHelper = new OkHttpHelper();
-        Runnable runnable = new Runnable() { // from class: com.semengresik.epoool_transportasi.Utils.-$$Lambda$Function$s0IgHu6poidBNQ4wucMWdmEFJH8
-            @Override // java.lang.Runnable
+        Runnable runnable = new Runnable() { 
+            @Override 
             public final void run() {
                 Function.lambda$null$0(okHttpHelper);
             }

@@ -1,6 +1,6 @@
 package com.semengresik.epoool_transportasi.Models;
 
-/* loaded from: classes.dex */
+
 public class ModelDrawer {
 
     /* renamed from: id, reason: collision with root package name */

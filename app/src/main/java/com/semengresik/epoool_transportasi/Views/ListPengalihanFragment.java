@@ -25,7 +25,6 @@ import com.semengresik.epoool_transportasi.Utils.GsonConverter;
 
 import java.util.List;
 
-/* loaded from: classes.dex */
 public class ListPengalihanFragment extends Fragment implements ListPengalihanPresenter.ViewListPengalihan {
     private CardView cardCari;
     Context context;
@@ -36,7 +35,7 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
     private SwipyRefreshLayout srl;
     private TextView tvKosong;
 
-    @Override // androidx.fragment.app.Fragment
+    @Override 
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View viewInflate = layoutInflater.inflate(R.layout.fragment_list_pengalihan, viewGroup, false);
         this.rcPengalihan = (RecyclerView) viewInflate.findViewById(R.id.rc_pengalihan);
@@ -50,20 +49,20 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
         this.cardCari.setVisibility(View.VISIBLE);
         this.presenter = new ListPengalihanPresenter(this);
         presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, this.search);
-        this.srl.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.1
-            @Override // com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout.OnRefreshListener
+        this.srl.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() { 
+            @Override 
             public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
-                ListPengalihanFragment.this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, ListPengalihanFragment.this.search);
+                presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, search);
             }
         });
-        this.editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.2
-            @Override // android.widget.TextView.OnEditorActionListener
+        this.editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { 
+            @Override 
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == 3) {
-                    ListPengalihanFragment.this.srl.setRefreshing(true);
-                    ListPengalihanFragment.this.search = textView.getText().toString();
-                    ListPengalihanFragment.this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, ListPengalihanFragment.this.search);
-                    ((InputMethodManager) ListPengalihanFragment.this.context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(ListPengalihanFragment.this.editSearch.getWindowToken(), 0);
+                    srl.setRefreshing(true);
+                    search = textView.getText().toString();
+                    presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, search);
+                    ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
                 }
                 return false;
             }
@@ -71,14 +70,14 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
         return viewInflate;
     }
 
-    @Override // androidx.fragment.app.Fragment
+    @Override 
     public void onResume() {
         super.onResume();
         this.srl.setRefreshing(true);
         this.presenter.loadPengalihan(ExifInterface.GPS_MEASUREMENT_3D, this.search);
     }
 
-    @Override // com.semengresik.epoool_transportasi.Views.ListPengalihanPresenter.ViewListPengalihan
+    @Override 
     public void showPengalihan(final List<PengalihanModel> list, int i, String str) {
         this.srl.setRefreshing(false);
         if (i != 1 || list.size() == 0) {
@@ -86,14 +85,14 @@ public class ListPengalihanFragment extends Fragment implements ListPengalihanPr
         } else {
             this.tvKosong.setVisibility(View.GONE);
         }
-        this.rcPengalihan.setAdapter(new AdapterPengalihan(list, this.context, new AdapterPengalihan.Listener() { // from class: com.semengresik.epoool_transportasi.Views.ListPengalihanFragment.3
-            @Override // com.semengresik.epoool_transportasi.Adapters.AdapterPengalihan.Listener
+        this.rcPengalihan.setAdapter(new AdapterPengalihan(list, this.context, new AdapterPengalihan.Listener() { 
+            @Override 
             public void onItemClick(int i2) {
                 String jsonString = new GsonConverter().toJsonString(list.get(i2));
-                Intent intent = new Intent(ListPengalihanFragment.this.context, (Class<?>) DetailPengalihanActivity.class);
+                Intent intent = new Intent(context, (Class<?>) DetailPengalihanActivity.class);
                 intent.putExtra("pengalihan_string", jsonString);
-                ListPengalihanFragment.this.context.startActivity(intent);
-                Function.openAct(ListPengalihanFragment.this.context);
+                context.startActivity(intent);
+                Function.openAct(context);
             }
         }));
         this.rcPengalihan.setNestedScrollingEnabled(false);

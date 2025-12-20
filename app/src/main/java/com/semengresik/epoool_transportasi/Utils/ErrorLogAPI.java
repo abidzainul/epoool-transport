@@ -5,7 +5,7 @@ package com.semengresik.epoool_transportasi.Utils;
 import com.semengresik.epoool_transportasi.REST.ApiClient;
 import java.util.Date;
 
-/* loaded from: classes.dex */
+
 public class ErrorLogAPI {
     public static void errorThrowing(String str, String str2) {
 //        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();

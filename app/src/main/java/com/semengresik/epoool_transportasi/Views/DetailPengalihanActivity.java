@@ -14,7 +14,6 @@ import com.semengresik.epoool_transportasi.R;
 import com.semengresik.epoool_transportasi.Utils.Function;
 import com.semengresik.epoool_transportasi.Utils.GsonConverter;
 
-/* loaded from: classes.dex */
 public class DetailPengalihanActivity extends AppCompatActivity implements DetailPengalihanPresenter.ViewDetailPengalihan {
     private Button btnSetuju;
     private Button btnTolak;
@@ -41,7 +40,7 @@ public class DetailPengalihanActivity extends AppCompatActivity implements Detai
     private TextView tvTujuanBaru;
     private TextView tv_qty;
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_detail_pengalihan);
@@ -67,20 +66,20 @@ public class DetailPengalihanActivity extends AppCompatActivity implements Detai
         this.tvDistBaru = (TextView) findViewById(R.id.tv_dist_baru);
         this.tvTanggalSpj = (TextView) findViewById(R.id.tv_tanggal_spj);
         this.context = this;
-        this.pengalihan = new GsonConverter<PengalihanModel>() { // from class: com.semengresik.epoool_transportasi.Views.DetailPengalihanActivity.1
+        this.pengalihan = new GsonConverter<PengalihanModel>() { 
         }.toJsonObject(getIntent().getStringExtra("pengalihan_string"));
         setData();
         this.presenter = new DetailPengalihanPresenter(this);
-        this.btnTolak.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Views.DetailPengalihanActivity.2
-            @Override // android.view.View.OnClickListener
+        this.btnTolak.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
-                DetailPengalihanActivity.this.presenter.updateStatus(DetailPengalihanActivity.this.pengalihan.getIdPengalihan(), "5");
+                presenter.updateStatus(pengalihan.getIdPengalihan(), "5");
             }
         });
-        this.btnSetuju.setOnClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Views.DetailPengalihanActivity.3
-            @Override // android.view.View.OnClickListener
+        this.btnSetuju.setOnClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
-                DetailPengalihanActivity.this.presenter.updateStatus(DetailPengalihanActivity.this.pengalihan.getIdPengalihan(), "4");
+                presenter.updateStatus(pengalihan.getIdPengalihan(), "4");
             }
         });
     }
@@ -124,7 +123,7 @@ public class DetailPengalihanActivity extends AppCompatActivity implements Detai
         this.tvDistBaru.setText(this.pengalihan.getNamaDistributorBaru() + " (" + this.pengalihan.getKdDistributorBaru() + ")");
     }
 
-    @Override // com.semengresik.epoool_transportasi.Views.DetailPengalihanPresenter.ViewDetailPengalihan
+    @Override 
     public void afterApproved(int i, String str) {
         if (i == 1) {
             Toast.makeText(this.context, str, Toast.LENGTH_SHORT).show();

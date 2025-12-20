@@ -2,7 +2,6 @@ package com.semengresik.epoool_transportasi.Utils;
 
 import java.util.HashMap;
 
-/* loaded from: classes.dex */
 public class MimeTypeUtil {
     static HashMap<String, String> types = new HashMap<>();
 

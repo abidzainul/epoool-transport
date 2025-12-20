@@ -30,7 +30,6 @@ import com.semengresik.epoool_transportasi.Utils.drawer.AdapterListViewDrawer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/* loaded from: classes.dex */
 public class MainActivity extends AppCompatActivity {
     public static Context context;
     public static DrawerLayout mDrawerLayout;
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mTitle;
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override 
     protected void onCreate(Bundle bundle) throws Resources.NotFoundException {
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
@@ -63,25 +62,25 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(ExifInterface.GPS_MEASUREMENT_3D);
         Constant.adapterListViewDrawer = new AdapterListViewDrawer(this, arrayList);
         this.lvDrawer.setAdapter((ListAdapter) Constant.adapterListViewDrawer);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) { // from class: com.semengresik.epoool_transportasi.Views.MainActivity.1
-            @Override // androidx.appcompat.app.ActionBarDrawerToggle, androidx.drawerlayout.widget.DrawerLayout.DrawerListener
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) { 
+            @Override 
             public void onDrawerClosed(View view) {
-                MainActivity.this.getSupportActionBar().setTitle(MainActivity.this.mTitle);
-                MainActivity.this.invalidateOptionsMenu();
+                getSupportActionBar().setTitle(mTitle);
+                invalidateOptionsMenu();
             }
 
-            @Override // androidx.appcompat.app.ActionBarDrawerToggle, androidx.drawerlayout.widget.DrawerLayout.DrawerListener
+            @Override 
             public void onDrawerOpened(View view) {
-                MainActivity.this.getSupportActionBar().setTitle(MainActivity.this.mDrawerTitle);
-                MainActivity.this.invalidateOptionsMenu();
+                getSupportActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu();
             }
         };
         this.mDrawerToggle = actionBarDrawerToggle;
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         this.mDrawerToggle.setDrawerIndicatorEnabled(false);
         this.mDrawerToggle.setHomeAsUpIndicator(ResourcesCompat.getDrawable(getResources(), R.drawable.menu_putih, getTheme()));
-        this.mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() { // from class: com.semengresik.epoool_transportasi.Views.MainActivity.2
-            @Override // android.view.View.OnClickListener
+        this.mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() { 
+            @Override 
             public void onClick(View view) {
                 if (MainActivity.mDrawerLayout.isDrawerVisible(GravityCompat.START)) {
                     MainActivity.mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -94,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void logOut(final SharedPreferences sharedPreferences) {
-        DialogHelper.showWithDoubleButton(context, "Log Out", "Apakah Anda yakin ingin log out?", "Ya", "Tidak", new Runnable() { // from class: com.semengresik.epoool_transportasi.Views.MainActivity.3
-            @Override // java.lang.Runnable
+        DialogHelper.showWithDoubleButton(context, "Log Out", "Apakah Anda yakin ingin log out?", "Ya", "Tidak", new Runnable() { 
+            @Override 
             public void run() {
                 MainActivity.requestLogOut(sharedPreferences);
             }
@@ -106,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
         OkHttpHelper okHttpHelper = new OkHttpHelper();
         final AlertDialog alertDialogCreate = new AlertDialog.Builder(context).setView(R.layout.dialog_progress_bar).create();
         alertDialogCreate.show();
-        Runnable runnable = new Runnable() { // from class: com.semengresik.epoool_transportasi.Views.MainActivity.4
-            @Override // java.lang.Runnable
+        Runnable runnable = new Runnable() { 
+            @Override 
             public void run() {
                 alertDialogCreate.dismiss();
                 sharedPreferences.edit().clear().apply();
@@ -125,23 +124,23 @@ public class MainActivity extends AppCompatActivity {
         okHttpHelper.posting(context, Constant.url + "logout", Function.paramAdderPost(new HashMap()), runnable, false, (RelativeLayout) null, (View) null);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override 
     protected void onActivityResult(int i, int i2, Intent intent) {
         super.onActivityResult(i, i2, intent);
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
+    @Override 
     public void onBackPressed() {
-        DialogHelper.showWithDoubleButton(context, "Keluar", "Apakah anda yakin ingin keluar?", "Ya", "Tidak", new Runnable() { // from class: com.semengresik.epoool_transportasi.Views.MainActivity.5
-            @Override // java.lang.Runnable
+        DialogHelper.showWithDoubleButton(context, "Keluar", "Apakah anda yakin ingin keluar?", "Ya", "Tidak", new Runnable() { 
+            @Override 
             public void run() {
-                MainActivity.this.finish();
+                finish();
                 Function.closeAct(MainActivity.context);
             }
         });
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override 
     protected void onDestroy() {
         super.onDestroy();
         if (Constant.intentQueue != null) {
@@ -149,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override // android.app.Activity
+    @Override 
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (this.mDrawerToggle.onOptionsItemSelected(menuItem)) {
             return true;
@@ -157,24 +156,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(menuItem);
     }
 
-    @Override // android.app.Activity
+    @Override 
     public void setTitle(int i) {
         setTitle(getString(i));
     }
 
-    @Override // android.app.Activity
+    @Override 
     public void setTitle(CharSequence charSequence) {
         this.mTitle = charSequence;
         getSupportActionBar().setTitle(this.mTitle);
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity, android.app.Activity
+    @Override 
     protected void onPostCreate(Bundle bundle) {
         super.onPostCreate(bundle);
         this.mDrawerToggle.syncState();
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity, android.content.ComponentCallbacks
+    @Override 
     public void onConfigurationChanged(Configuration configuration) {
         super.onConfigurationChanged(configuration);
         this.mDrawerToggle.onConfigurationChanged(configuration);
