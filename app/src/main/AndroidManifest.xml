@@ -23,10 +23,10 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <permission
-        android:name="com.semengresik.epoool_transportasi.permission.MAPS_RECEIVE"
+        android:name=".permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.semengresik.epoool_transportasi.googlemapsv2.permission.MAPS_RECEIVE" />
+    <uses-permission android:name=".googlemapsv2.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
 
@@ -43,19 +43,19 @@
         tools:replace="android:icon">
 
         <activity
-            android:name="com.semengresik.epoool_transportasi.Views.SearchActivity"
+            android:name=".Views.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity
             android:theme="@style/AppTheme.NoActionBar"
-            android:name="com.semengresik.epoool_transportasi.Views.MainActivity"
+            android:name=".Views.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
-            android:name="com.semengresik.epoool_transportasi.Views.DetailPengalihanActivity"
+            android:name=".Views.DetailPengalihanActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.semengresik.epoool_transportasi.Views.LoginActivity"
+            android:name=".Views.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

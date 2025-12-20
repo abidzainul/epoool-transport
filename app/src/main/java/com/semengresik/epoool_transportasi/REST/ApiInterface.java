@@ -3,9 +3,11 @@ package com.semengresik.epoool_transportasi.REST;
 import androidx.core.app.NotificationCompat;
 import com.semengresik.epoool_transportasi.Models.AlasanModel;
 import com.semengresik.epoool_transportasi.Models.DeliveryOrderModel;
+import com.semengresik.epoool_transportasi.Models.DeliveryRequestRes;
 import com.semengresik.epoool_transportasi.Models.InsertUpdateModel;
 import com.semengresik.epoool_transportasi.Models.PengalihanModel;
 import com.semengresik.epoool_transportasi.Models.ReceiverModel;
+import com.semengresik.epoool_transportasi.Models.SalesOrderRes;
 import com.semengresik.epoool_transportasi.Models.SearchModel;
 import com.semengresik.epoool_transportasi.Models.UserLoginModel;
 import io.reactivex.Observable;
@@ -49,4 +51,22 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("mobile/pengalihan/api_pengalihan/update_pengalihan_v2")
     Observable<InsertUpdateModel> updateStatusPengalihan(@Field("id_username") String str, @Field("token_fcm") String str2, @Field("id_pengalihan") String str3, @Field(NotificationCompat.CATEGORY_STATUS) String str4);
+
+    @FormUrlEncoded
+    @POST("mobile/originator/Delivery_request/get_so")
+    Observable<SalesOrderRes> getSalesOrder(@Field("token") String str1, @Field("kd_plant") String str2, @Field("date_from") String str3, @Field("date_to") String str4);
+
+    @FormUrlEncoded
+    @POST("mobile/originator/Delivery_request/get_delivery_request")
+    Observable<DeliveryRequestRes> getDeliveryRequest(@Field("token") String str1, @Field("no_so") String str2, @Field("line_so") String str3);
+
+    @FormUrlEncoded
+    @POST("mobile/originator/Delivery_request/save_delivery_request")
+    Observable<InsertUpdateModel> saveDeliveryRequest(@Field("token") String str,
+                                                      @Field("no_so") String str2,
+                                                      @Field("line_so") String str3,
+                                                      @Field("qty") String str4,
+                                                      @Field("tanggal_kirim") String str5,
+                                                      @Field("note") String str6);
+
 }

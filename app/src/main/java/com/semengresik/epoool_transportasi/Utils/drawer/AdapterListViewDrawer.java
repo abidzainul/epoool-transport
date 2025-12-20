@@ -3,6 +3,7 @@ package com.semengresik.epoool_transportasi.Utils.drawer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,6 +18,7 @@ import com.semengresik.epoool_transportasi.Utils.Function;
 import com.semengresik.epoool_transportasi.Views.FormPengalihanFragment;
 import com.semengresik.epoool_transportasi.Views.HistoryPengalihanFragment;
 import com.semengresik.epoool_transportasi.Views.ListPengalihanFragment;
+import com.semengresik.epoool_transportasi.Views.ListSalesOrderFragment;
 import com.semengresik.epoool_transportasi.Views.MainActivity;
 import java.util.ArrayList;
 
@@ -83,6 +85,20 @@ public class AdapterListViewDrawer extends BaseAdapter {
                 @Override 
                 public void onClick(View view2) {
                     Function.getFragment(AdapterListViewDrawer.this.context, new HistoryPengalihanFragment(), Constant.holderFragment);
+                    MainActivity.mDrawerLayout.closeDrawer(GravityCompat.START);
+                }
+            });
+        }  else if (str.equals("9")) {
+            view = ((Activity) this.context).getLayoutInflater().inflate(R.layout.item_drawer_direct, viewGroup, false);
+            ImageView imageView3 = (ImageView) view.findViewById(R.id.iv_logout_drawer);
+            TextView textView3 = (TextView) view.findViewById(R.id.tv_logout_drawer);
+            imageView3.setImageResource(R.drawable.muatan);
+            imageView3.setColorFilter(Color.argb(250, 250, 250, 250));
+            textView3.setText("DELIVERY REQUEST");
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view2) {
+                    Function.getFragment(AdapterListViewDrawer.this.context, new ListSalesOrderFragment(), Constant.holderFragment);
                     MainActivity.mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
             });

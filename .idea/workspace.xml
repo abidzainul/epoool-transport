@@ -55,6 +55,16 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_confirmation.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_info.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_list.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -71,6 +81,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/header_drawer.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_drawer_direct.xml">
         <config>
           <theme>@style/AppTheme</theme>
         </config>
@@ -92,18 +107,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa946b2-7010-4c62-aa8b-bd936a926870" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Adapters/AdapterPengalihan.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Adapters/AdapterPengalihan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/REST/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/REST/ApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/DialogHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/DialogHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/OkHttpHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/OkHttpHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/PBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/PBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/DetailPengalihanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/DetailPengalihanActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/FormPengalihanFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/FormPengalihanFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/HistoryPengalihanFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/HistoryPengalihanFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/ListPengalihanFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/ListPengalihanFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/SearchActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/REST/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/REST/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/drawer/AdapterListViewDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Utils/drawer/AdapterListViewDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +179,7 @@
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/appdevwismilak/AndroidStudioProjects/CC/epoool-transport",
+    "last_opened_file_path": "/Users/appdevwismilak/AndroidStudioProjects/CC/epoool-transport/app/src/main/res/layout",
     "project.structure.last.edited": "Dependencies",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
@@ -183,9 +192,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/libs" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Views" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Models" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/semengresik/epoool_transportasi/Adapters" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/libs" />
@@ -275,6 +286,14 @@
     </task>
     <servers />
   </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
@@ -290,12 +309,12 @@
         </entry>
         <entry key="com.semengresik.epoool_transportasi">
           <value>
-            <CheckInfo lastCheckTimestamp="1765703124431" />
+            <CheckInfo lastCheckTimestamp="1766194785470" />
           </value>
         </entry>
         <entry key="com.semengresik.epoool_transportasi.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1765703124432" />
+            <CheckInfo lastCheckTimestamp="1766194785472" />
           </value>
         </entry>
         <entry key="com.studio.aptikma.semengresik.driver">

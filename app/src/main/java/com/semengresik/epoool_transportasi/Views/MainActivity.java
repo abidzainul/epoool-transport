@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add("1");
         arrayList.add("0");
         arrayList.add("6");
+        arrayList.add("9");
         arrayList.add(ExifInterface.GPS_MEASUREMENT_3D);
         Constant.adapterListViewDrawer = new AdapterListViewDrawer(this, arrayList);
         this.lvDrawer.setAdapter((ListAdapter) Constant.adapterListViewDrawer);
