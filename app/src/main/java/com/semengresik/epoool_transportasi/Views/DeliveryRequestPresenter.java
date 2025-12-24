@@ -22,6 +22,7 @@ public class DeliveryRequestPresenter {
     public interface ViewDeliveryRequest {
         void showDeliveryRequest(List<DeliveryRequest> list, int i, String str);
         void afterRequest(int i, String str);
+        void afterDelete(int i, String str);
     }
 
     public DeliveryRequestPresenter(ViewDeliveryRequest view) {
@@ -62,24 +63,48 @@ public class DeliveryRequestPresenter {
                         qty, dateSend, note)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<InsertUpdateModel>() {
-            @Override
-            public void onComplete() {
-            }
+                    @Override
+                    public void onComplete() {
+                    }
 
-            @Override
-            public void onSubscribe(Disposable disposable) {
-            }
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+                    }
 
-            @Override
-            public void onNext(InsertUpdateModel insertUpdateModel) {
-                view.afterRequest(insertUpdateModel.getCode().intValue(), insertUpdateModel.getPesan());
-            }
+                    @Override
+                    public void onNext(InsertUpdateModel insertUpdateModel) {
+                        view.afterRequest(insertUpdateModel.getCode().intValue(), insertUpdateModel.getPesan());
+                    }
 
-            @Override
-            public void onError(Throwable th) {
-                view.afterRequest(0, Constant.warningNoConnection);
-            }
-        });
+                    @Override
+                    public void onError(Throwable th) {
+                        view.afterRequest(0, th.getMessage());
+                    }
+                });
     }
-    
+
+    public void deleteData(String id) {
+        this.apiInterface.deleteDeliveryRequest(Constant.token_fcm, id)
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<InsertUpdateModel>() {
+                    @Override
+                    public void onComplete() {
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+                    }
+
+                    @Override
+                    public void onNext(InsertUpdateModel insertUpdateModel) {
+                        view.afterDelete(insertUpdateModel.getCode().intValue(), insertUpdateModel.getPesan());
+                    }
+
+                    @Override
+                    public void onError(Throwable th) {
+                        view.afterDelete(0, Constant.warningNoConnection);
+                    }
+                });
+    }
+
 }

@@ -69,4 +69,8 @@ public interface ApiInterface {
                                                       @Field("tanggal_kirim") String str5,
                                                       @Field("note") String str6);
 
+    @FormUrlEncoded
+    @POST("mobile/originator/Delivery_request/delete")
+    Observable<InsertUpdateModel> deleteDeliveryRequest(@Field("token") String str, @Field("id_delivery_request") String str2);
+
 }
