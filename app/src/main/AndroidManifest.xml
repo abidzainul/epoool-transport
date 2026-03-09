@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.semengresik.epoool_transportasi">
+    package="com.epoool.transport">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -43,19 +43,19 @@
         tools:replace="android:icon">
 
         <activity
-            android:name=".Views.SearchActivity"
+            android:name="com.epoool.transport.Views.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".Views.MainActivity"
+            android:name="com.epoool.transport.Views.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
-            android:name=".Views.DetailPengalihanActivity"
+            android:name="com.epoool.transport.Views.DetailPengalihanActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Views.LoginActivity"
+            android:name="com.epoool.transport.Views.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
